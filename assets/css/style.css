@@ -38,8 +38,9 @@ button {
   color: #ffffff;
   position: sticky;
   top: 0;
-  padding: 14px 20px;
-  text-align: center;
+  padding: 10px 24px;
+  text-align: left;
+  white-space: nowrap;
 }
 
 #logo {
@@ -66,6 +67,7 @@ button {
   border: none;
   border-radius: 4px 0 0 4px;
   font-size: 0.95rem;
+  line-height: 40px;
   outline: none;
 }
 
@@ -79,6 +81,7 @@ button {
   font-weight: 500;
   border-radius: 0 4px 4px 0;
   font-size: 0.95rem;
+  line-height: 40px;
 }
 
 #nav-destra {
@@ -102,6 +105,11 @@ button {
   border-radius: 4px;
 }
 
+#nav-destra a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
 /*OFFERTE*/
 .hero {
   background-color: #303f51;
@@ -114,9 +122,7 @@ button {
 .hero h1 {
   margin-top: 0;
   font-size: 2.6rem;
-  font-weight: 800;
   margin-bottom: 12px;
-  letter-spacing: -0.5px;
 }
 
 .hero p {
@@ -128,7 +134,7 @@ button {
 main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 30px 24px 60px;
+  padding: 0px 24px 60px;
 }
 
 main h2 {
@@ -234,9 +240,8 @@ div[id="prodotto"] {
   background-color: #eeeeee;
   border-radius: 4px;
   height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 220px;
+  text-align: center;
   font-size: 2.4rem;
   font-weight: 600;
   color: #232f3e;
@@ -301,21 +306,47 @@ button[id="bottone"]:hover {
 footer {
   background-color: #232f3e;
   color: #dddddd;
-  padding: 45px 60px;
-  text-align: center;
+  padding: 60px 80px;
+  box-sizing: border-box;
 }
 
 footer div {
   display: inline-block;
   vertical-align: top;
+  width: 28%;
+  margin-right: 4%;
   text-align: left;
-  margin: 0 45px;
+  box-sizing: border-box;
+}
+
+footer div:last-child {
+  margin-right: 0;
+}
+
+footer div h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 footer ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 footer ul li {
-  margin-bottom: 9px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+footer ul li a {
+  color: #dddddd;
+  text-decoration: none;
+}
+
+footer ul li:hover {
+  text-decoration: underline;
+  color: #ffffff;
 }
