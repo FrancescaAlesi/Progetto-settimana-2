@@ -36,7 +36,7 @@ const prodotti = [
 
   {
     nome: "Occhiali da sole graduati",
-    categoria: "Accessorio",
+    categoria: "Accessori",
     prezzo: 54.5,
     rating: 5,
     immagine: "occhiali.png",
@@ -82,7 +82,7 @@ const prodotti = [
   {
     nome: "Giacca impermeabile",
     categoria: "Giacche",
-    prezzo: 89.90,
+    prezzo: 89.9,
     rating: 3,
     immagine: "giacca.png",
     disponibile: true,
@@ -91,7 +91,7 @@ const prodotti = [
   {
     nome: "Stivali di pelle",
     categoria: "Scarpe",
-    prezzo: 45.50,
+    prezzo: 45.5,
     rating: 3,
     immagine: "scarpe.png",
     disponibile: false,
@@ -100,7 +100,7 @@ const prodotti = [
   {
     nome: "T-Shirt a collo alto",
     categoria: "T-Shirt",
-    prezzo: 15.90,
+    prezzo: 15.9,
     rating: 4,
     immagine: "maglietta.png",
     disponibile: true,
@@ -117,7 +117,7 @@ const prodotti = [
 
   {
     nome: "Camicia di lino a manica lunga",
-    categoria: "camicia",
+    categoria: "Camicia",
     prezzo: 14.99,
     rating: 3,
     immagine: "camicia.png",
@@ -132,12 +132,21 @@ const prodotti = [
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function formattaPrezzo(prezzo){
-    const stringaPrezzo = '' + prezzo;
-    const parti = stringaPrezzo.split('.');
+console.log(`----ESERCIZIO-2----`);
+
+function formattaPrezzo(prezzo) {
+  let euro = Math.floor(prezzo);
+  let centesimi = Math.floor(prezzo - euro);
+
+  if (centesimi < 10) {
+    centesimi = "0" + centesimi;
+  }
+  return "€" + euro + "," + centesimi;
 }
 
-console.log(`Giacca impermeabile: ${formattaPrezzo()}`)
+for (let i = 0; i < prodotti.length; i++) {
+  console.log(prodotti[i].nome + ": " + formattaPrezzo(prodotti[i].prezzo));
+}
 
 /* VERSIONE INTERMEDIA — stelline(rating)
    Funzione che ritorna una stringa di stelline piene/vuote.
@@ -147,23 +156,25 @@ console.log(`Giacca impermeabile: ${formattaPrezzo()}`)
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-function stelline(rating){
-    let risultato = '';
+console.log(`----ESERCIZIO-3----`);
 
-    for(let i = 1; i <= rating; i++){
-        if (i <= rating) {
-            risultato += '★';
-        } else {
-            risultato += '☆';
-        }
+function stelline(rating, max = 5) {
+  let risultato = "";
+
+  for (let i = 1; i <= max; i++) {
+    if (i <= rating) {
+      risultato += "★";
+    } else {
+      risultato += "☆";
     }
-    return risultato;
+  }
+  return risultato;
 }
 
 for (let i = 0; i < prodotti.length; i++) {
   const prodotto = prodotti[i];
   const stelle = stelline(prodotto.rating);
-  
+
   console.log(prodotto.nome + ": rating " + prodotto.rating + " → " + stelle);
 }
 
@@ -173,11 +184,41 @@ for (let i = 0; i < prodotti.length; i++) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+console.log(`----ESERCIZIO-4----`);
+
+function perCategoria(categoriaScelta) {
+  let risultati = [];
+
+  for (let i = 0; i < prodotti.length; i++) {
+    if (prodotti[i].categoria === categoriaScelta) {
+      risultati.push(prodotti[i]);
+    }
+  }
+  return risultati;
+}
+
+console.log(perCategoria('Accessori'));
+
 /* VERSIONE INTERMEDIA — Filtro disponibilità e rating
    Funzione che genera un array filtrato dall'array prodotti, mostrando soltanto i prodotti disponibili con rating >= 3
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+console.log(`----ESERCIZIO-5----`);
+
+function prodottiDisponibili() {
+    let risultati = [];
+
+  for (let i = 0; i < prodotti.length; i++) {
+    if (prodotti[i].disponibile === true && prodotti[i].rating >= 3) {
+      risultati.push(prodotti[i]);
+    }
+  }
+  return risultati;
+}
+
+console.log(prodottiDisponibili());
 
 /* --------------------------------------------------------------
 
@@ -188,6 +229,10 @@ for (let i = 0; i < prodotti.length; i++) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+
+
+/* --------------------------------------------------------------
+
 /* EXTRA - VERSIONE AVANZATA — Aggiungi al carrello
    Quando si clicca il bottone "Aggiungi al carrello", incrementa il contatore
    nell'header (Carrello (0) → Carrello (1) → ...).
@@ -197,7 +242,7 @@ for (let i = 0; i < prodotti.length; i++) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/* VERSIONE AVANZATA — Ordinamento
+/* EXTRA - VERSIONE AVANZATA — Ordinamento
    Menu a tendina con: Prezzo crescente, Prezzo decrescente, Rating.
    Suggerimento: per rendere più leggibile la select puoi usare optgroup
 */
@@ -211,7 +256,7 @@ for (let i = 0; i < prodotti.length; i++) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-/* VERSIONE AVANZATA — localStorage
+/* EXTRA - VERSIONE AVANZATA — localStorage
    Il carrello sopravvive al refresh della pagina.
    Concetto da scoprire: localStorage.setItem / localStorage.getItem.
 */

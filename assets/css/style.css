@@ -301,6 +301,28 @@ button[id="bottone"]:hover {
   border-color: #f2c200;
   box-shadow: 0 2px 5px rgba(213, 217, 217, 0.8);
 }
+.box-tutti {
+  text-align: center;    
+  margin: 30px 0 40px 0;
+}
+
+#tutti {
+  display: inline-block;
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 20px;
+  padding: 10px 32px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f1111;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+#tutti:hover {
+  background-color: #f7ca00;
+  border-color: #f2c200;
+}
 
 /*FOOTER*/
 footer {
