@@ -8,7 +8,6 @@ REGOLE
 - Cerca solo cose non viste a lezione. Tutto il necessario è già stato spiegato in settimana.
 */
 
-
 /* VERSIONE INTERMEDIA — array prodotti
    Crea l'array "prodotti" con almeno 12 oggetti.
    Ogni oggetto: nome, categoria, prezzo, rating (1-5), immagine, disponibile.
@@ -16,7 +15,115 @@ REGOLE
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const prodotti = [
+  {
+    nome: "T-Shirt Basic cotone",
+    categoria: "T-Shirt",
+    prezzo: 19.9,
+    rating: 3,
+    immagine: "maglietta.png",
+    disponibile: true,
+  },
 
+  {
+    nome: "Zaino porta Pc",
+    categoria: "Borsa",
+    prezzo: 25.99,
+    rating: 4,
+    immagine: "zaino.png",
+    disponibile: false,
+  },
+
+  {
+    nome: "Occhiali da sole graduati",
+    categoria: "Accessorio",
+    prezzo: 54.5,
+    rating: 5,
+    immagine: "occhiali.png",
+    disponibile: true,
+  },
+
+  {
+    nome: "Jeans slim scuri ",
+    categoria: "Pantaloni",
+    prezzo: 25.9,
+    rating: 5,
+    immagine: "pantalone.png",
+    disponibile: true,
+  },
+
+  {
+    nome: "Felpa con cappuccio Oversize",
+    categoria: "felpe",
+    prezzo: 45.0,
+    rating: 4,
+    immagine: "felpe.png",
+    disponibile: false,
+  },
+
+  {
+    nome: "New balance 9060",
+    categoria: "Scarpe",
+    prezzo: 190.0,
+    rating: 5,
+    immagine: "scarpe.png",
+    disponibile: false,
+  },
+
+  {
+    nome: "Cintura di pelle",
+    categoria: "Accessori",
+    prezzo: 19.9,
+    rating: 4,
+    immagine: "cintura.png",
+    disponibile: false,
+  },
+
+  {
+    nome: "Giacca impermeabile",
+    categoria: "Giacche",
+    prezzo: 89.90,
+    rating: 3,
+    immagine: "giacca.png",
+    disponibile: true,
+  },
+
+  {
+    nome: "Stivali di pelle",
+    categoria: "Scarpe",
+    prezzo: 45.50,
+    rating: 3,
+    immagine: "scarpe.png",
+    disponibile: false,
+  },
+
+  {
+    nome: "T-Shirt a collo alto",
+    categoria: "T-Shirt",
+    prezzo: 15.90,
+    rating: 4,
+    immagine: "maglietta.png",
+    disponibile: true,
+  },
+
+  {
+    nome: "Pantaloni felpati",
+    categoria: "Pantaloni",
+    prezzo: 19.9,
+    rating: 3,
+    immagine: "pantaloni.png",
+    disponibile: true,
+  },
+
+  {
+    nome: "Camicia di lino a manica lunga",
+    categoria: "camicia",
+    prezzo: 14.99,
+    rating: 3,
+    immagine: "camicia.png",
+    disponibile: false,
+  },
+];
 
 /* VERSIONE INTERMEDIA — formattaPrezzo(prezzo)
    Funzione che ritorna una stringa tipo "€ 19,99".
@@ -25,6 +132,12 @@ REGOLE
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+function formattaPrezzo(prezzo){
+    const stringaPrezzo = '' + prezzo;
+    const parti = stringaPrezzo.split('.');
+}
+
+console.log(`Giacca impermeabile: ${formattaPrezzo()}`)
 
 /* VERSIONE INTERMEDIA — stelline(rating)
    Funzione che ritorna una stringa di stelline piene/vuote.
@@ -33,6 +146,26 @@ REGOLE
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+function stelline(rating){
+    let risultato = '';
+
+    for(let i = 1; i <= rating; i++){
+        if (i <= rating) {
+            risultato += '★';
+        } else {
+            risultato += '☆';
+        }
+    }
+    return risultato;
+}
+
+for (let i = 0; i < prodotti.length; i++) {
+  const prodotto = prodotti[i];
+  const stelle = stelline(prodotto.rating);
+  
+  console.log(prodotto.nome + ": rating " + prodotto.rating + " → " + stelle);
+}
 
 /* VERSIONE INTERMEDIA — Filtro per categoria
    Funzione che riceve il parametro categoria e filtra l'array prodotti mostrando solo i prodotti della categoria ricevuta
@@ -55,7 +188,6 @@ REGOLE
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-
 /* EXTRA - VERSIONE AVANZATA — Aggiungi al carrello
    Quando si clicca il bottone "Aggiungi al carrello", incrementa il contatore
    nell'header (Carrello (0) → Carrello (1) → ...).
@@ -65,7 +197,6 @@ REGOLE
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-
 /* VERSIONE AVANZATA — Ordinamento
    Menu a tendina con: Prezzo crescente, Prezzo decrescente, Rating.
    Suggerimento: per rendere più leggibile la select puoi usare optgroup
@@ -73,14 +204,12 @@ REGOLE
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
-
 /* EXTRA - VERSIONE AVANZATA — Riepilogo carrello
    Pagina carrello con elenco prodotti aggiunti, totale, bottone "Svuota".
    Concetto da scoprire: localStorage.setItem / localStorage.getItem.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-
 
 /* VERSIONE AVANZATA — localStorage
    Il carrello sopravvive al refresh della pagina.
