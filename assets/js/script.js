@@ -135,13 +135,7 @@ const prodotti = [
 console.log(`----ESERCIZIO-2----`);
 
 function formattaPrezzo(prezzo) {
-  let euro = Math.floor(prezzo);
-  let centesimi = Math.floor(prezzo - euro);
-
-  if (centesimi < 10) {
-    centesimi = "0" + centesimi;
-  }
-  return "€" + euro + "," + centesimi;
+  return "€ " + prezzo.toFixed(2).replace(".", ",");
 }
 
 for (let i = 0; i < prodotti.length; i++) {
@@ -197,7 +191,7 @@ function perCategoria(categoriaScelta) {
   return risultati;
 }
 
-console.log(perCategoria('Accessori'));
+console.log(perCategoria("Accessori"));
 
 /* VERSIONE INTERMEDIA — Filtro disponibilità e rating
    Funzione che genera un array filtrato dall'array prodotti, mostrando soltanto i prodotti disponibili con rating >= 3
@@ -208,7 +202,7 @@ console.log(perCategoria('Accessori'));
 console.log(`----ESERCIZIO-5----`);
 
 function prodottiDisponibili() {
-    let risultati = [];
+  let risultati = [];
 
   for (let i = 0; i < prodotti.length; i++) {
     if (prodotti[i].disponibile === true && prodotti[i].rating >= 3) {
@@ -229,7 +223,58 @@ console.log(prodottiDisponibili());
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+console.log(`----ESERCIZIO-6----`);
 
+function generaTabellaProdotti(lista, tableId) {
+  const tabella = document.getElementById(tableId);
+  if (!tabella) return;
+
+  tabella.innerHTML = "";
+
+  const thead = document.createElement("thead");
+  thead.innerHTML = `
+    <tr>
+      <th>NOME</th>
+      <th>CATEGORIA</th>
+      <th>PREZZO</th>
+      <th>RATING</th>
+    </tr>
+  `;
+  tabella.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
+  for (let i = 0; i < lista.length; i++) {
+    const item = lista[i];
+
+    const tr = document.createElement("tr");
+
+    const stellinePiene = "★".repeat(item.rating);
+    const stellineVuote = "☆".repeat(5 - item.rating);
+    const ratingStelle = `${stellinePiene}${stellineVuote}`;
+
+    tr.innerHTML = `
+      <td>${item.nome}</td>
+      <td>${item.categoria}</td>
+      <td>€ ${item.prezzo}</td>
+      <td class="col-rating">${ratingStelle}</td>
+    `;
+
+    tbody.appendChild(tr);
+  }
+
+  tabella.appendChild(tbody);
+
+  const tfoot = document.createElement("tfoot");
+  tfoot.innerHTML = `
+    <tr>
+      <td colspan="4">Totale prodotti = ${lista.length}</td>
+    </tr>
+  `;
+  tabella.appendChild(tfoot);
+}
+
+console.log(generaTabellaProdotti(prodotti, "tabella-prodotti"));
 
 /* --------------------------------------------------------------
 
